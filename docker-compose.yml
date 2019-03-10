@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+        bitcoind:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-core
+                        args:   ## set your UID and GID that should own produced files
+                                host_uid: 1000
+                                host_gid: 985
+                image: bitcoin_core:v0.17.1
+                container_name: bitcoind
+                # ZMQ ports
+                # exposes ports to the linked services, not to the host
+                expose:
+                        - "28332"
+                        - "28333"
+                ports:
+                        - "8333:8333"
+                        #- "127.0.0.1:8332:8332"
+                        #- "18333:18333"
+                        #- "127.0.0.1:18332:18332"
+                volumes:
+                        ## mount /bitcoin datadir to the host
+                        - "$HOME/bitcoin-docker-data:/bitcoin"
