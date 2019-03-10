@@ -28,4 +28,4 @@ If you want to rebuild the image explicitly add `--build`.
 
 ## Security considerations
 RPC credentials are hardcoded into Dockerfile and RPC interface is closed and accessible only from inside docker container.
-You can change it if you wish, open it to external IP in ENTRYPOINT specification in Dockerfile (see bitcoind --help). RPC ports can be then mapped to the host machine in docker-compose.yml file. Make sure not to map RPC port (by default 8332) outside local machine unless you know what you are doing. This means prepend use `"127.0.0.1:<rpcport>:<rpcport>` in Dockerfile.
+You can change it if you wish, open it to external IP in ENTRYPOINT specification in Dockerfile (see bitcoind --help). RPC ports can be then mapped to the host machine in docker-compose.yml file. Make sure not to map RPC port (by default 8332) outside local machine unless you know what you are doing. This means type `"127.0.0.1:<rpcport>:<rpcport>` in Dockerfile.
